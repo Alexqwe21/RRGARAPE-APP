@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./logo_favicon.ico" type="image/x-icon">
+    <title>rrgarageapp</title>
+</head>
+
+<body>
+
+    <section class="perfil_cliente app ">
+
+        <div class="container_voltar">
+            <a href="index.html" class="voltar">
+                <img src="assets/img/seta_esquerda.svg" alt="seta esquerda"> Voltar
+            </a>
+            <img src="assets/img/logo_pequeno.svg" alt="logo_pequeno">
+        </div>
+
+        <div class="logo_wave">
+            <img src="assets/img/waze_sem_logo.svg" alt="logo_wave">
+        </div>
+
+
+        <div class="formulario bg-none">
+            <h2>Perfil</h2>
+
+            <form action="" method="post">
+                <div class="input_grupo">
+
+                 
+                    <!-- NOME -->
+                    <label for="nome"> Nome Completo:</label>
+                    <input type="text" name="nome" id="nome" required>
+
+                    <!-- EMAIL -->
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required>
+
+                    <!-- CPF/CNPJ -->
+                    <label for="cpg_cnpj">CPF/CNPJ:</label>
+                    <input type="text" name="email" id="email" required>
+
+                    <!-- TELEFONE -->
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone">
+
+                    <!-- DATA DE NASCIMENTO -->
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="text" id="dataNascimento" name="dataNascimento">
+
+                    <!-- CEP -->
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep">
+
+                    <!-- BOTÃO CEP -->
+                    <div class="button_cep">
+                        <button class="btn_app" type="submit">BUSCAR</button>
+                    </div>
+
+                    <!-- LOGRADOURO -->
+                    <label for="logradouro">Logradouro:</label>
+                    <input type="text" id="logradouro" name="logradouro">
+
+                    <!-- BAIRRO -->
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro">
+
+                    <!-- CIDADE -->
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade">
+
+                    <!-- UF -->
+                    <label for="uf">UF:</label>
+                    <input type="text" id="uf" name="uf">
+
+                    <!-- NUMERO -->
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" name="numero">
+
+                    
+                    <!-- SENHA -->
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha">
+
+                    <!-- CONFIRMAR SENHA -->
+                    <label for="confirmarSenha">Confirmar senha:</label>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha">
+
+
+                    <div class="button_senha">
+                        <button class="btn_app" type="submit">SALVAR ALTERAÇÕES</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <script>
+        const senhaInput = document.getElementById('senha');
+        const toggleSenha = document.getElementById('toggleSenha');
+
+        toggleSenha.addEventListener('click', () => {
+            const estaVisivel = senhaInput.type === 'text';
+            senhaInput.type = estaVisivel ? 'password' : 'text';
+
+            // Troca o ícone do olho
+            toggleSenha.src = estaVisivel ? 'img/olho_fechado.svg' : 'img/olho_aberto.svg';
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>

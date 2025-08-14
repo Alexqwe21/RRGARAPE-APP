@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker Customizado</title>
+    <style>
+        body {
+            background: #2e2e2e;
+            color: #fff;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .btn {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: #2e2e2e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .date-picker {
+            display: flex;
+            gap: 20px;
+        }
+
+        .date-column {
+            height: 150px;
+            width: 80px;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
+            border-top: 2px solid #aaa;
+            border-bottom: 2px solid #aaa;
+        }
+
+        .date-column div {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2em;
+            scroll-snap-align: center;
+            color: #ccc;
+        }
+
+        .date-column div.selected {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-wrapper">
+        <form id="formData">
+            <input type="hidden" name="data" id="dataSelecionada">
+            <button type="button" class="btn" onclick="abrirModal()">Selecionar Data</button>
+            <br><br>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </div>
+
+    <div class="modal" id="modalData">
+        <div class="modal-content">
+            <div class="date-picker">
+                <div id="dias" class="date-column"></div>
+                <div id="meses" class="date-column"></div>
+                <div id="anos" class="date-column"></div>
+            </div>
+            <br>
+            <button class="btn" onclick="selecionarData()">Confirmar</button>
+        </div>
+    </div>
+
+    <script>
+        const dias = document.getElementById("dias");
+        const meses = document.getElementById("meses");
+        const anos = document.getElementById("anos");
+        const modal = document.getElementById("modalData");
+
+        function abrirModal() {
+            modal.style.display = "flex";
+        }
+
+        function selecionarData() {
+            const dia = dias.querySelector(".selected")?.textContent || '01';
+            const mes = meses.querySelector(".selected")?.textContent || 'jan.';
+            const ano = anos.querySelector(".selected")?.textContent || '2025';
+            document.getElementById("dataSelecionada").value = `${dia} ${mes} ${ano}`;
+            modal.style.display = "none";
+        }
+
+        function ativarSelecao(container) {
+            container.addEventListener("scroll", () => {
+                const children = container.querySelectorAll("div");
+                let closest = null;
+                let minDist = Infinity;
+                children.forEach(child => {
+                    const dist = Math.abs(child.getBoundingClientRect().top - container.getBoundingClientRect().top - 50);
+                    if (dist < minDist) {
+                        closest = child;
+                        minDist = dist;
+                    }
+                });
+                if (closest) {
+                    children.forEach(el => el.classList.remove("selected"));
+                    closest.classList.add("selected");
+                }
+            });
+        }
+
+        // Preenche dados
+        for (let i = 1; i <= 31; i++) {
+            const el = document.createElement("div");
+            el.textContent = i.toString().padStart(2, "0");
+            dias.appendChild(el);
+        }
+
+        const nomesMeses = ["jan.", "fev.", "mar.", "abr.", "mai.", "jun.", "jul.", "ago.", "set.", "out.", "nov.", "dez."];
+        nomesMeses.forEach(mes => {
+            const el = document.createElement("div");
+            el.textContent = mes;
+            meses.appendChild(el);
+        });
+
+        for (let i = 2020; i <= 2030; i++) {
+            const el = document.createElement("div");
+            el.textContent = i;
+            anos.appendChild(el);
+        }
+
+        // Ativa seleção por rolagem
+        ativarSelecao(dias);
+        ativarSelecao(meses);
+        ativarSelecao(anos);
+
+        // Captura envio do formulário
+        document.getElementById("formData").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Data enviada: " + document.getElementById("dataSelecionada").value);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{
+    "name": "Aplicativo RRGARAGE",
+    "short_name": "RRGARAGE",
+    "description": "Aplicativo para agendamento",
+    "start_url": "index.php",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "id": "webdevsolutions.rrgarageapp",
+    "orientation": "portrait",
+    "launch_handler": {
+        "client_mode": "focus-existing"
+    },
+    "icons": [
+        {
+            "src": "assets/img/logo_rrgarageApp.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "assets/img/logo_rrgarageApp.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/img/tela-login.png",
+            "sizes": "540x960",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/img/tela_agendamento.png",
+            "sizes": "540x960",
+            "type": "image/png"
+        }
+    ]
+}

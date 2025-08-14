@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./logo_favicon.ico" type="image/x-icon">
+    <title>rrgarageapp</title>
+</head>
+
+<body>
+    <section class="login app">
+
+        <div class="logo_wave">
+            <img src="assets/img/logo_wave.svg" alt="logo_wave">
+        </div>
+
+        <div class="formulario">
+            <h2>Login</h2>
+            <form action="" method="post">
+
+                <div class="input_grupo">
+
+                    <label for="email"> <img src="assets/img/email.svg" alt="email">Email</label>
+                    <input type="email" name="email" id="email" required placeholder="exemplo@gmail.com">
+
+                    <label for="senha" class="cadeado"> <img src="assets/img/cadeado.svg" alt="cadeado">Senha</label>
+                    <div class="input-wrapper">
+                        <input type="password" name="senha" id="senha" required placeholder="******************">
+                        <img src="assets/img/olho_fechado.svg" alt="Ver senha" id="toggleSenha" class="icone-senha">
+                    </div>
+
+                    <div class="esqueceu_senha">
+                        <p>Esqueceu sua senha? <a href="esqueci_senha.html">Clique Aqui!</a></p>
+                    </div>
+
+                    <div class="button_entrar">
+                        <button class="btn_app" type="submit">Entrar</button>
+                    </div>
+
+                    <div class="Cadastre-se">
+                        <p>Não possui uma conta? <a href="cadastro_cliente.html">Cadastre-se</a></p>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+
+    <script>
+        const senhaInput = document.getElementById('senha');
+        const toggleSenha = document.getElementById('toggleSenha');
+
+        toggleSenha.addEventListener('click', () => {
+            const estaVisivel = senhaInput.type === 'text';
+            senhaInput.type = estaVisivel ? 'password' : 'text';
+
+            // Troca o ícone do olho
+            toggleSenha.src = estaVisivel ? 'img/olho_fechado.svg' : 'img/olho_aberto.svg';
+        });
+    </script>
+
+</body>
+
+</html>

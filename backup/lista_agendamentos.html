@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Reset de estilos -->
+    <link rel="stylesheet" href="css/reset.css">
+
+    <!-- Favicon e manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./logo_favicon.ico" type="image/x-icon">
+
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>rrgarageapp</title>
+</head>
+
+<body>
+
+    <section class="app fundo_circulo_invertido">
+
+        <div class="container_voltar">
+            <a href="index.html" class="voltar">
+                <img src="assets/img/seta_esquerda.svg" alt="seta esquerda"> Voltar
+            </a>
+            <img src="assets/img/logo_pequeno.svg" alt="logo_pequeno">
+        </div>
+
+        <div class="bg-none">
+            <h2>Meus Agendamentos</h2>
+            <h2>5</h2>
+            <div class="opcoes_agendamentos">
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="data_texto">
+                            <p>Avaliação</p>
+                            <span>19/02/2025</span>
+                        </div>
+
+                        <div class="status_horario">
+                            <p>Ativa</p>
+                            <span>17:00h</span>
+                        </div>
+                        <div class="container_menu">
+
+
+
+                            <div class="menu_suspenso">
+                                <button class="menu_botao"><img src="assets/img/menu_suspenso.svg"
+                                        alt="menu_suspenso"></button>
+                                <div class="dropdown_conteudo">
+                                    <a href="#">Item 1</a>
+                                    <a href="#">Item 2</a>
+                                    <a href="#">Item 3</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="data_texto">
+                            <p>Avaliação</p>
+                            <span>19/02/2025</span>
+                        </div>
+
+                        <div class="status_horario">
+                            <p>Ativa</p>
+                            <span>17:00h</span>
+                        </div>
+                        <div class="container_menu">
+
+
+
+                            <div class="menu_suspenso">
+                                <button class="menu_botao"><img src="assets/img/menu_suspenso.svg"
+                                        alt="menu_suspenso"></button>
+                                <div class="dropdown_conteudo">
+                                    <a href="#">Item 1</a>
+                                    <a href="#">Item 2</a>
+                                    <a href="#">Item 3</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="data_texto">
+                            <p>Avaliação</p>
+                            <span>19/02/2025</span>
+                        </div>
+
+                        <div class="status_horario">
+                            <p>Ativa</p>
+                            <span>17:00h</span>
+                        </div>
+                        <div class="container_menu">
+
+
+
+                            <div class="menu_suspenso">
+                                <button class="menu_botao"><img src="assets/img/menu_suspenso.svg"
+                                        alt="menu_suspenso"></button>
+                                <div class="dropdown_conteudo">
+                                    <a href="#">Item 1</a>
+                                    <a href="#">Item 2</a>
+                                    <a href="#">Item 3</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="data_texto">
+                            <p>Avaliação</p>
+                            <span>19/02/2025</span>
+                        </div>
+
+                        <div class="status_horario">
+                            <p  style="color: #FF0000;">Cancelado</p>
+                            <span>10:00</span>
+                        </div>
+                        <div class="container_menu">
+
+
+
+                            <div class="menu_suspenso">
+                                <button class="menu_botao"><img src="assets/img/menu_suspenso.svg"
+                                        alt="menu_suspenso"></button>
+                                <div class="dropdown_conteudo">
+                                    <a href="#">Item 1</a>
+                                    <a href="#">Item 2</a>
+                                    <a href="#">Item 3</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="data_texto">
+                            <p>Avaliação</p>
+                            <span>19/02/2025</span>
+                        </div>
+
+                        <div class="status_horario">
+                            <p style="color: #F7FF00;">Em analise</p>
+                            <span>15:00h</span>
+                        </div>
+                        <div class="container_menu">
+
+
+
+                            <div class="menu_suspenso">
+                                <button class="menu_botao"><img src="assets/img/menu_suspenso.svg"
+                                        alt="menu_suspenso"></button>
+                                <div class="dropdown_conteudo">
+                                    <a href="#">Item 1</a>
+                                    <a href="#">Item 2</a>
+                                    <a href="#">Item 3</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <script>
+        document.querySelectorAll('.menu_suspenso').forEach(menu => {
+            const botao = menu.querySelector('.menu_botao');
+
+            botao.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que o clique feche imediatamente
+                document.querySelectorAll('.menu_suspenso').forEach(m => m.classList.remove('ativo')); // Fecha outros
+                menu.classList.toggle('ativo'); // Abre este
+            });
+        });
+
+        // Fecha todos ao clicar fora
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.menu_suspenso').forEach(m => m.classList.remove('ativo'));
+        });
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Reset de estilos -->
+    <link rel="stylesheet" href="css/reset.css">
+
+    <!-- Favicon e manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./logo_favicon.ico" type="image/x-icon">
+
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>rrgarageapp</title>
+</head>
+
+<body>
+
+    <section class="minhas_ordens app fundo_circulo_invertido">
+
+        <div class="container_voltar">
+            <a href="index.html" class="voltar">
+                <img src="assets/img/seta_esquerda.svg" alt="seta esquerda"> Voltar
+            </a>
+            <img src="assets/img/logo_pequeno.svg" alt="logo_pequeno">
+        </div>
+
+        <div class="lista_ordens bg-none">
+            <h2>Minhas  Ordens de Serviço</h2>
+            <h2>5</h2>
+            <div class="opcoes_ordens">
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="texto_servico">
+                            <p>Serviço:</p>
+                            <span class="azul">Limpeza
+                                estética</span>
+                        </div>
+
+                        <div class="status_horario">
+
+                            <p>Status:</p>
+                            <span class="amarelo">Em
+                                andamento</span>
+                        </div>
+
+                        <div class="previcao_con">
+
+                            <p>Previsão de
+                                conclusão:</p>
+                            <span class="verde">2h</span>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="#" class="btn_app">VER DETALHES</a>
+
+                <div class="ordem_indo_carro">
+                    <p>Ford Mustang BGE-02A7</p>
+                </div>
+
+            </div>
+
+
+            <div class="opcoes_ordens">
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="texto_servico">
+                            <p>Serviço:</p>
+                            <span class="azul">Limpeza
+                                estética</span>
+                        </div>
+
+                        <div class="status_horario">
+
+                            <p>Status:</p>
+                            <span  class="verde_">Concluido</span>
+                        </div>
+
+                        <div class="previcao_con">
+
+                            <p>Previsão de
+                                conclusão:</p>
+                            <span class="verde">4h</span>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="#" class="btn_app">VER DETALHES</a>
+
+                <div class="ordem_indo_carro">
+                    <p>Ford Mustang BGE-02A7</p>
+                </div>
+
+            </div>
+
+            <div class="opcoes_ordens">
+
+                <div class="listar_caixa">
+                    <div class="container">
+                        <div class="texto_servico">
+                            <p>Serviço:</p>
+                            <span class="azul">Limpeza
+                                estética</span>
+                        </div>
+
+                        <div class="status_horario">
+
+                            <p>Status:</p>
+                            <span class="amarelo" style="color: #CC0808;">Cancelado</span>
+                        </div>
+
+                        <div class="previcao_con">
+
+                            <p>Previsão de
+                                conclusão:</p>
+                            <span class="verde">2h</span>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="#" class="btn_app">VER DETALHES</a>
+
+                <div class="ordem_indo_carro">
+                    <p>Ford Mustang BGE-02A7</p>
+                </div>
+
+            </div>
+
+
+
+    </section>
+
+
+
+
+
+
+    <script>
+        document.querySelectorAll('.menu_suspenso').forEach(menu => {
+            const botao = menu.querySelector('.menu_botao');
+
+            botao.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que o clique feche imediatamente
+                document.querySelectorAll('.menu_suspenso').forEach(m => m.classList.remove('ativo')); // Fecha outros
+                menu.classList.toggle('ativo'); // Abre este
+            });
+        });
+
+        // Fecha todos ao clicar fora
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.menu_suspenso').forEach(m => m.classList.remove('ativo'));
+        });
+    </script>
+
+</body>
+
+
+
+</html>

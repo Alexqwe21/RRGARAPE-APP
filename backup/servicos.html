@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./logo_favicon.ico" type="image/x-icon">
+    <title>rrgarageapp</title>
+</head>
+
+<body>
+
+    <section class="servicos app fundo_circulo">
+        <div class="container_voltar">
+            <a href="index.html" class="voltar">
+                <img src="assets/img/seta_esquerda.svg" alt="seta esquerda"> Voltar
+            </a>
+            <img src="assets/img/logo_pequeno.svg" alt="logo_pequeno">
+        </div>
+
+        <h2>Serviços</h2>
+
+        <h3>Veículos</h3>
+        <div class="card_carrossel">
+
+            <div class="card">
+                <div class="card_foto">
+                    <img src="assets/img/carro_servico.png" alt="carro">
+                </div>
+                <div class="card_text">
+                    <h3>Lorem ipsum</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                    <a href="#" class="btn_app saiba_mais">Saiba Mais</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card_foto">
+                    <img src="assets/img/carro_servico.png" alt="carro">
+                </div>
+                <div class="card_text">
+                    <h3>Lorem ipsum</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                    <a href="#" class="btn_app saiba_mais">Saiba Mais</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card_foto">
+                    <img src="assets/img/carro_servico.png" alt="carro">
+                </div>
+                <div class="card_text">
+                    <h3>Lorem ipsum</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                    <a href="#" class="btn_app saiba_mais">Saiba Mais</a>
+                </div>
+            </div>
+
+        </div>
+
+        <h3>Tapeçaria:</h3>
+        <div class="card_carrossel">
+
+            <div class="card">
+                <div class="card_foto">
+                    <img src="assets/img/carro_servico.png" alt="carro">
+                </div>
+                <div class="card_text">
+                    <h3>Lorem ipsum</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                    <a href="#" class="btn_app saiba_mais">Saiba Mais</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card_foto">
+                    <img src="assets/img/carro_servico.png" alt="carro">
+                </div>
+                <div class="card_text">
+                    <h3>Lorem ipsum</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                    <a href="#" class="btn_app saiba_mais">Saiba Mais</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card_foto">
+                    <img src="assets/img/carro_servico.png" alt="carro">
+                </div>
+                <div class="card_text">
+                    <h3>Lorem ipsum</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+                    <a href="#" class="btn_app saiba_mais">Saiba Mais</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- <h3>Tapeçaria</h3>
+    <div class="card">
+        <div class="card_foto">
+            <img src="assets/img/carro_servico.png" alt="carro">
+        </div>
+        <div class="card_text">
+            <h3>Lorem ipsum</h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Quis rem voluptas quasi ab nobis laboriosam maiores praesentium
+                voluptatibus facere. Officia.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_foto">
+            <img src="assets/img/carro_servico.png" alt="carro">
+        </div>
+        <div class="card_text">
+            <h3>Lorem ipsum</h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Quis rem voluptas quasi ab nobis laboriosam maiores praesentium
+                voluptatibus facere. Officia.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card_foto">
+            <img src="assets/img/carro_servico.png" alt="carro">
+        </div>
+        <div class="card_text">
+            <h3>Lorem ipsum</h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Quis rem voluptas quasi ab nobis laboriosam maiores praesentium
+                voluptatibus facere. Officia.
+            </p>
+        </div>
+    </div>
+
+    <div class="card_carrossel">
+        <div class="card">
+            <div class="card_foto">
+                <img src="assets/img/tapecaria.png" alt="carro">
+            </div>
+            <div class="card_text">
+                <h3>Lorem ipsum</h3>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Quis rem voluptas quasi ab nobis laboriosam maiores praesentium
+                    voluptatibus facere. Officia.
+                </p>
+            </div>
+        </div>
+    </div> -->
+
+    <script>
+        const senhaInput = document.getElementById('senha');
+        const toggleSenha = document.getElementById('toggleSenha');
+
+        toggleSenha.addEventListener('click', () => {
+            const estaVisivel = senhaInput.type === 'text';
+            senhaInput.type = estaVisivel ? 'password' : 'text';
+
+            // Troca o ícone do olho
+            toggleSenha.src = estaVisivel ? 'img/olho_fechado.svg' : 'img/olho_aberto.svg';
+        });
+    </script>
+
+</body>
+
+
+
+</html>

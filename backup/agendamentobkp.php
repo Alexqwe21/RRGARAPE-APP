@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendamento</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .dias {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: thin;
+            /* Firefox */
+            scrollbar-color: #007bff transparent;
+            /* Cor da barra e do fundo */
+
+            /* Chrome, Edge, Safari */
+            &::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #007bff;
+                border-radius: 10px;
+                border: 2px solid transparent;
+                background-clip: content-box;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: #0056b3;
+            }
+        }
+
+        .data {
+            display: inline-block;
+            background: linear-gradient(169deg, #636363 0%, #4C4C4C73 100%);
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.2em;
+            min-width: 80px;
+            transition: 0.2s;
+        }
+
+        .data p {
+            margin: 5px 0;
+        }
+
+        .data.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        input[type="radio"]:checked+.data {
+            background: linear-gradient(169deg, #2A89F5 0%, #2A64F573 100%);
+        }
+
+        .horarios {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px auto 0;
+        }
+
+        .horarios label {
+            display: inline-block;
+            background: linear-gradient(169deg, #636363 0%, #4C4C4C73 100%);
+            border-radius: 8px;
+            padding: 15px 20px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.2em;
+            min-width: 100px;
+            width: 30%;
+            transition: 0.2s;
+        }
+
+        input[type="radio"]:checked+label {
+            background: linear-gradient(169deg, #2A89F5 0%, #2A64F573 100%);
+        }
+
+        input[type="submit"] {
+            margin: 30px auto 0;
+            display: block;
+            background-color: #2A89F5;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1867c0;
+        }
+
+        #chat {
+            background: #1E1E1E;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 450px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .bot,
+        .user {
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        .bot {
+            background: linear-gradient(to right, #2A89F5, #2A64F5);
+            width: fit-content;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .user {
+            background: linear-gradient(to right, #636363, #4C4C4C);
+            width: fit-content;
+            margin-left: auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .inputUser {
+            max-width: 400px;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            #userInput {
+                background-color: #000000;
+                color: #ffffff;
+                font-size: 1.1em;
+                border-radius: 10px;
+                border: none;
+                padding: 20px;
+            }
+        }
+
+        .btnApp {
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            padding: 20px;
+            font-size: 1.1em;
+            color: #ffffff;
+            background: linear-gradient(to right, #2A89F5, #2A64F5);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="chat">
+        <div class="bot">Olá! Vamos fazer seu agendamento. 😊</div>
+    </div>
+
+    <div class="inputUser" id="inputUserContainer">
+        <input type="text" id="userInput" placeholder="Digite aqui..." autofocus />
+        <button class="btnApp" onclick="sendInput(event)">Enviar</button>
+    </div>
+
+    <!-- Agendamento: aparece depois -->
+    <div id="agendamentoSection" style="display: none; margin-top: 20px;">
+        <!-- <h3>Selecione o dia e horário para o agendamento:</h3> -->
+        <form id="formAgendamento">
+            <div class="dias" id="diasContainer"></div>
+            <div class="horarios" id="horariosContainer"></div>
+            <br />
+            <button class="btnApp" type="submit">Confirmar Agendamento</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const chatContainer = document.getElementById("chat");
+            const userInput = document.getElementById("userInput");
+            const inputUserContainer = document.getElementById("inputUserContainer");
+            const agendamentoSection = document.getElementById("agendamentoSection");
+            const formAgendamento = document.getElementById("formAgendamento");
+
+            const perguntas = <?php echo json_encode(array_column($perguntas, 'pergunta')); ?>;
+            console.log(perguntas);
+
+            let indicePergunta = 0;
+            let respostas = {
+                nome: "",
+                email: "",
+                telefone: "",
+                dataHora: ""
+            };
+
+            adicionarMensagemBot(perguntas[indicePergunta]);
+
+            userInput.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    sendInput(e);
+                }
+            });
+
+            window.sendInput = function(event) {
+                if (event) event.preventDefault();
+
+                const resposta = userInput.value.trim();
+                if (resposta === "" || userInput.disabled) return;
+
+                adicionarMensagemUsuario(resposta);
+
+                userInput.disabled = true;
+                inputUserContainer.querySelector("button").disabled = true;
+
+                if (indicePergunta === 0) respostas.nome = resposta;
+                else if (indicePergunta === 1) respostas.email = resposta;
+                else if (indicePergunta === 2) respostas.telefone = resposta;
+
+                userInput.value = "";
+                indicePergunta++;
+
+                if (indicePergunta < perguntas.length) {
+                    setTimeout(() => {
+                        adicionarMensagemBot(perguntas[indicePergunta]);
+                        userInput.disabled = false;
+                        inputUserContainer.querySelector("button").disabled = false;
+                        userInput.focus();
+                    }, 500);
+                } else {
+                    inputUserContainer.style.display = "none";
+                    setTimeout(() => {
+                        adicionarMensagemBot("Agora selecione o dia e horário para seu agendamento. 📅");
+                        agendamentoSection.style.display = "block";
+                        inicializarAgendamento();
+
+                        setTimeout(() => {
+                            agendamentoSection.scrollIntoView({
+                                behavior: "smooth",
+                                block: "end"
+                            });
+                        }, 300);
+                    }, 500);
+                }
+            };
+
+            function adicionarMensagemBot(texto) {
+                const div = document.createElement("div");
+                div.classList.add("bot");
+                div.innerText = texto;
+                chatContainer.appendChild(div);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function adicionarMensagemUsuario(texto) {
+                const div = document.createElement("div");
+                div.classList.add("user");
+                div.innerText = texto;
+                chatContainer.appendChild(div);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function inicializarAgendamento() {
+                const diasSemana = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
+                const diasContainer = document.getElementById('diasContainer');
+                const horariosContainer = document.getElementById('horariosContainer');
+                const hoje = new Date();
+                const dias = [];
+
+                diasContainer.innerHTML = '';
+                horariosContainer.innerHTML = '';
+
+                let diaInicialIndex = 0;
+                for (let i = 0; i < 14; i++) {
+                    const data = new Date();
+                    data.setDate(hoje.getDate() + i);
+                    const diaSemana = data.getDay();
+                    if (diaSemana !== 0 && diaSemana !== 6) {
+                        diaInicialIndex = i;
+                        break;
+                    }
+                }
+
+                for (let i = 0; i < 14; i++) {
+                    const data = new Date();
+                    data.setDate(hoje.getDate() + i);
+                    const diaSemanaStr = diasSemana[data.getDay()];
+                    const dia = data.getDate().toString().padStart(2, '0');
+                    const mes = data.toLocaleString('default', {
+                        month: 'short'
+                    }).toUpperCase();
+                    const dataFormatada = data.toISOString().split('T')[0];
+                    const inputId = `dia_${i}`;
+                    const isWeekend = data.getDay() === 0 || data.getDay() === 6;
+
+                    dias.push({
+                        index: i,
+                        label: `${i === diaInicialIndex ? 'HOJE' : dia} ${mes}`,
+                        value: dataFormatada,
+                        isWeekend
+                    });
+
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = 'dia';
+                    input.value = dataFormatada;
+                    input.id = inputId;
+                    if (i === diaInicialIndex) input.checked = true;
+                    input.disabled = isWeekend;
+
+                    const label = document.createElement('label');
+                    label.htmlFor = inputId;
+                    label.className = 'data';
+                    if (isWeekend) label.classList.add('disabled');
+                    label.innerHTML = `
+                        <p>${diaSemanaStr}</p>
+                        <hr>
+                        <p>${i === diaInicialIndex ? 'HOJE' : dia}</p>
+                        <p>${mes}</p>
+                    `;
+
+                    diasContainer.appendChild(input);
+                    diasContainer.appendChild(label);
+                }
+
+                function gerarHorarios(diaIndex) {
+                    horariosContainer.innerHTML = '';
+                    if (dias[diaIndex].isWeekend) return;
+
+                    for (let hora = 8; hora <= 18; hora++) {
+                        const horario = `${hora.toString().padStart(2, '0')}:00`;
+                        const id = `horario_${dias[diaIndex].index}_${hora}`;
+
+                        const input = document.createElement('input');
+                        input.type = 'radio';
+                        input.name = 'horario';
+                        input.value = horario;
+                        input.id = id;
+
+                        const label = document.createElement('label');
+                        label.htmlFor = id;
+                        label.textContent = horario;
+
+                        horariosContainer.appendChild(input);
+                        horariosContainer.appendChild(label);
+                    }
+                }
+
+                diasContainer.addEventListener('change', (e) => {
+                    const selectedIndex = dias.findIndex(d => d.value === e.target.value);
+                    gerarHorarios(selectedIndex);
+                });
+
+                gerarHorarios(diaInicialIndex);
+
+                formAgendamento.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const diaSelecionado = this.elements['dia'].value;
+                    const horarioSelecionado = this.elements['horario'].value;
+
+                    if (!horarioSelecionado) {
+                        alert('Por favor, selecione um horário antes de confirmar.');
+                        return;
+                    }
+
+                    const dataObj = new Date(diaSelecionado);
+                    const dia = dataObj.getDate().toString().padStart(2, '0');
+                    const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
+                    const ano = dataObj.getFullYear();
+                    const dataFormatada = `${dia}/${mes}/${ano}`;
+
+                    respostas.dataHora = `${diaSelecionado} ${horarioSelecionado}`;
+
+                    adicionarMensagemUsuario(`Dia: ${dataFormatada}, Horário: ${horarioSelecionado}`);
+                    adicionarMensagemBot(`Agendamento realizado com sucesso para ${dataFormatada} às ${horarioSelecionado}. ✅`);
+
+                    console.log("Respostas do usuário:", respostas);
+
+                    agendamentoSection.remove();
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

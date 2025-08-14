@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.07" y1="0.835" x2="0.623" y2="0.828" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2a89f5"/>
+      <stop offset="1" stop-color="#2a64f5"/>
+    </linearGradient>
+  </defs>
+  <g id="Grupo_150" data-name="Grupo 150" transform="translate(-44 -151)">
+    <circle id="Elipse_51" data-name="Elipse 51" cx="25" cy="25" r="25" transform="translate(44 151)" fill="url(#linear-gradient)"/>
+    <g id="email-envelope-outline-shape-with-rounded-corners_icon-icons.com_56530" transform="translate(56.701 103)">
+      <path id="Caminho_110" data-name="Caminho 110" d="M21.523,64H3.075A3.308,3.308,0,0,0,0,67.5v14A3.308,3.308,0,0,0,3.075,85H21.523A3.308,3.308,0,0,0,24.6,81.5v-14A3.308,3.308,0,0,0,21.523,64Zm-5.061,9.34,6.508-6.349a1.892,1.892,0,0,1,.09.509v14a1.859,1.859,0,0,1-.062.343Zm5.061-7.59a1.274,1.274,0,0,1,.288.067L12.3,75.1,2.787,65.817a1.274,1.274,0,0,1,.288-.067ZM1.6,81.842a1.837,1.837,0,0,1-.061-.342v-14a1.892,1.892,0,0,1,.091-.509l6.506,6.347ZM3.075,83.25a1.324,1.324,0,0,1-.438-.1L9.3,74.478l2.5,2.435a.7.7,0,0,0,1,0l2.5-2.435,6.666,8.671a1.317,1.317,0,0,1-.438.1Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

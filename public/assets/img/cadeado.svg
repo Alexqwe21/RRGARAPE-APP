@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19" height="24.429" viewBox="0 0 19 24.429">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-1.504" y1="0.406" x2="2.517" y2="0.418" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2a89f5"/>
+      <stop offset="1" stop-color="#2a64f5"/>
+    </linearGradient>
+  </defs>
+  <g id="lock-outlined-padlock-symbol-for-security-interface_icon-icons.com_57803" transform="translate(-57.375)">
+    <g id="Grupo_1" data-name="Grupo 1" transform="translate(57.375)">
+      <path id="Caminho_26" data-name="Caminho 26" d="M212.382,286.875a1.986,1.986,0,0,0-2.006,2.006,2.094,2.094,0,0,0,.8,1.6v1.6a1.2,1.2,0,1,0,2.407,0v-1.6a2.094,2.094,0,0,0,.8-1.6A1.986,1.986,0,0,0,212.382,286.875Zm.4,3.129v2.086a.4.4,0,1,1-.8,0V290a1.207,1.207,0,0,1-.8-1.123,1.2,1.2,0,0,1,2.407,0A1.133,1.133,0,0,1,212.783,290Z" transform="translate(-202.882 -272.948)" fill="url(#linear-gradient)"/>
+      <path id="Caminho_27" data-name="Caminho 27" d="M73.661,9.952V6.786a6.786,6.786,0,0,0-13.571,0V9.952a2.666,2.666,0,0,0-2.714,2.714v9.048a2.666,2.666,0,0,0,2.714,2.714H73.661a2.666,2.666,0,0,0,2.714-2.714V12.667A2.722,2.722,0,0,0,73.661,9.952ZM60.994,6.786a5.881,5.881,0,0,1,11.762,0V9.952h-.9V6.786a4.976,4.976,0,1,0-9.952,0V9.952h-.9Zm9.952,0V9.952H62.8V6.786a4.071,4.071,0,0,1,8.143,0ZM75.47,21.714a1.815,1.815,0,0,1-1.81,1.81H60.089a1.815,1.815,0,0,1-1.81-1.81V12.667a1.815,1.815,0,0,1,1.81-1.81H73.661a1.815,1.815,0,0,1,1.81,1.81Z" transform="translate(-57.375)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

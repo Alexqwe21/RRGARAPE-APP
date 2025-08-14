@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./logo_favicon.ico" type="image/x-icon">
+    <title>rrgarageapp</title>
+</head>
+
+<body>
+
+    <section class="contato app">
+
+        <div class="container_voltar">
+            <a href="index.html" class="voltar"> <img src="assets/img/seta_esquerda.svg" alt="">Voltar</a>
+        </div>
+
+        <div class="logo_wave">
+            <img src="assets/img/logo_wave.svg" alt="logo_wave">
+        </div>
+
+        <div class="formulario">
+
+            <h2>Deixe sua mensagem</h2>
+
+            <form action="" method="post">
+
+                <div class="input_grupo">
+
+                    <!-- NOME -->
+                    <label for="nome" class="nome_label">Nome:</label>
+                    <input type="text" name="nome" id="nome" required>
+
+                    <!-- EMAIL -->
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required>
+
+                    <!-- ASSUNTO -->
+                    <label for="assunto">Assunto:</label>
+                    <input type="text" name="assunto" id="assunto">
+
+                    <!-- MENSAGEM -->
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea name="mensagem" id="mensagem"></textarea>
+
+                    <!-- BOTÃO -->
+                    <div class="button_entrar">
+                        <button class="btn_app" type="submit">
+                            ENTRE EM CONTATO
+                            <!-- <div class="aviao"> -->
+                            <img src="assets/img/Aviao.svg" alt="Aviao">
+                            <!-- </div> -->
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+
+    <script>
+        const senhaInput = document.getElementById('senha');
+        const toggleSenha = document.getElementById('toggleSenha');
+
+        toggleSenha.addEventListener('click', () => {
+            const estaVisivel = senhaInput.type === 'text';
+            senhaInput.type = estaVisivel ? 'password' : 'text';
+
+            // Troca o ícone do olho
+            toggleSenha.src = estaVisivel ? 'img/olho_fechado.svg' : 'img/olho_aberto.svg';
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>
